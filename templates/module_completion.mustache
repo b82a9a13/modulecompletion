@@ -1,0 +1,46 @@
+<link rel='stylesheet' href='./classes/css/modulecompletion.css'>
+<button onclick="window.location.href='{{page_url}}{{btm_ext}}'" class="btn btn-primary" id="activityrecord_btm">Back to menu</button>
+<h2 class='text-center'><b>{{fullname}}'s Module Completion</b></h2>
+<h2 class='text-center'><b>{{coursename}}</b></h2>
+<div>
+    <h3 class='text-center'>Progress Bar</h3>
+    <div id="progress_div" class='w-75 center d-flex'>
+        <div id="progress_bar" style="width: {{progress}}%; height: 25px; background-color: green;"></div>
+        <div id="expected_bar" style="width: {{expected}}%; height: 25px; background-color: orange;"></div>
+    </div>
+</div>
+<ul class="w-75 pt-2 center">
+    <li class="d-flex">
+        <div class="otjh-prog-square mr-1" id="otjh_prog_progress"></div>
+        <p>Progress</p>
+        <p>: {{progress}}%</p>
+    </li>
+    <li class="d-flex">
+        <div class="otjh-prog-square mr-1" id="otjh_prog_expected"></div>
+        <p>Expected</p>
+        <p>: {{expected_txt}}%</p>
+    </li>
+    <li class="d-flex">
+        <div class="otjh-prog-square mr-1" id="otjh_prog_incomplete"></div>
+        <p>Incomplete</p>
+        <p>: {{incomplete}}%</p>
+    </li>
+</ul>
+<table class='table table-bordered table-striped table-hover'>
+    <thead>
+        <tr>
+            <th>Module Name</th>
+            <th>Module Type</th>
+            <th>Completion State</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#module_array}}
+            <tr>
+                <td>{{0}}</td>
+                <td>{{1}}</td>
+                <td class='{{2}}'>{{2}}</td>
+            </tr>
+        {{/module_array}}
+    </tbody>
+</table>

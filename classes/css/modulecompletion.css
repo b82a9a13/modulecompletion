@@ -1,0 +1,32 @@
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}
+#progress_div, #progress_bar, #expected_bar{
+    width: 25px;
+    height: 25px;
+}
+#progress_div{
+    background-color: red;
+}
+#otjh_prog_progress{
+    background: green;
+    width: 25px;
+    height: 25px;
+}
+#otjh_prog_expected{
+    background: orange;
+    width: 25px;
+    height: 25px;
+}
+#otjh_prog_incomplete{
+    background: red;
+    width: 25px;
+    height: 25px;
+}
+.Incomplete{
+    background-color: red;
+}
+.Complete{
+    background-color: green;
+}

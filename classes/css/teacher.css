@@ -1,0 +1,17 @@
+.tp-title{
+    width: 15%;
+}
+.tp-img{
+    width: 120px;
+    height: 120px;
+}
+.otj-outer{
+    border: 2px solid #95287A;
+    border-radius: 5px;
+    margin-bottom: .5rem;
+    width: 100%;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
