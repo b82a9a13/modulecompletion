@@ -59,6 +59,7 @@ if($errorTxt != ''){
         ];
         echo $OUTPUT->render_from_template('local_modulecompletion/teacher_all_courses', $template);
         echo("<script src='./classes/js/teacher_course.js' defer></script>");
+        \local_modulecompletion\event\viewed_menu::create(array('context' => \context_system::instance()))->trigger();
     } elseif($type == 'one'){
         $_SESSION['mc_menu_type'] = 'one';
         $template = (Object)[
@@ -67,6 +68,7 @@ if($errorTxt != ''){
         echo $OUTPUT->render_from_template('local_modulecompletion/teacher_one_course', $template);
         echo("<script src='./classes/js/teacher_course.js'></script>");
         echo("<script defer>course_clicked($id)</script>");
+        \local_modulecompletion\event\viewed_menu::create(array('context' => \context_course::instance($id)))->trigger();
     }
 }
 

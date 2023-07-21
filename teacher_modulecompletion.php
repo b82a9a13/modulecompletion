@@ -80,5 +80,6 @@ if($errorText != ''){
         'page_url' => './teacher.php'
     ];
     echo $OUTPUT->render_from_template('local_modulecompletion/module_completion', $template);
+    \local_modulecompletion\event\viewed_modulecompletion::create(array('context' => \context_course::instance($cid), 'courseid' => $cid, 'relateduserid' => $uid, 'other' => $_GET['e']))->trigger();
 }
 echo $OUTPUT->footer();

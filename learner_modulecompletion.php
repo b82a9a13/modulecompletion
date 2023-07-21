@@ -49,5 +49,6 @@ if($errorTxt != ''){
         'module_array' => $lib->mod_comp_table_learn()
     ];
     echo $OUTPUT->render_from_template('local_modulecompletion/module_completion', $template);
+    \local_modulecompletion\event\viewed_modulecompletion_learn::create(array('context' => \context_course::instance($cid), 'courseid' => $cid))->trigger();
 }
 echo $OUTPUT->footer();
