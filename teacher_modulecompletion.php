@@ -10,6 +10,7 @@ use local_modulecompletion\lib;
 require_login();
 $lib = new lib;
 
+$p = 'local_modulecompletion';
 $errorTxt = '';
 $e = $_GET['e'];
 $uid = $_GET['uid'];
@@ -17,15 +18,15 @@ $cid = $_GET['cid'];
 $fullname = '';
 if($_GET['e']){
     if(($e != 'a' && $e != 'c') || empty($e)){
-        $errorTxt = 'Invalid e character provided.';
+        $errorTxt = get_string('invalid_ecp', $p);
     } else {
         if($_GET['uid']){
             if(!preg_match("/^[0-9]*$/", $uid) || empty($uid)){
-                $errorText = 'Invalid user id provided.';
+                $errorText = get_string('invalid_uip', $p);
             } else {
                 if($_GET['cid']){
                     if(!preg_match("/^[0-9]*$/", $cid) || empty($cid)){
-                        $errorText = 'Invalid course id provided.';
+                        $errorText = get_string('invalid_cip', $p);
                     } else {
                         if($lib->check_coach_course($cid)){
                             $context = context_course::instance($cid);
@@ -38,21 +39,21 @@ if($_GET['e']){
                             $PAGE->set_pagelayout('incourse');
                             $fullname = $lib->check_learner_enrolment($cid, $uid);
                             if($fullname == false){
-                                $errorText = 'The user selected is not enrolled as a learner in the course selected.';
+                                $errorText = get_string('the_user_not_enrolled', $p);
                             } else {
                                 $_SESSION['mc_records_uid'] = $uid;
                                 $_SESSION['mc_records_cid'] = $cid;
                             }
                         } else  {
-                            $errorText = 'You are not enrolled as a coach in the course provided.';
+                            $errorText = get_string('you_not_coach', $p);
                         }
                     }
                 } else {
-                    $errorText = 'No course id provided.';
+                    $errorText = get_string('no_cip', $p);
                 }
             }
         } else {
-            $errorText = 'No user id provided.';
+            $errorText = get_string('no_uip', $p);
         }
     }
 }
@@ -69,6 +70,15 @@ if($errorText != ''){
     $percentages = $lib->get_percentages();
     $expected = ($percentages[0] >= $percentages[1]) ? 0 : $percentages[1];
     $template = (Object)[
+        'btm' => get_string('btm', $p),
+        'title' => get_string('module_comp', $p),
+        'progress_b' => get_string('progress_b', $p),
+        'progress_str' => get_string('progress', $p),
+        'expected_str' => get_string('expected', $p),
+        'incomplete_str' => get_string('incomplete', $p),
+        'mod_name' => get_string('module_name', $p),
+        'mod_type' => get_string('module_type', $p),
+        'comp_state' => get_string('comp_state', $p),
         'fullname' => $fullname,
         'coursename' => $lib->get_course_fullname($cid),
         'btm_ext' => $e,

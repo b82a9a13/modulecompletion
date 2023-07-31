@@ -1,0 +1,20 @@
+canvas = document.querySelectorAll('.otjh-canvas');
+canvas.forEach((item)=>{
+    const int = 2;
+    const progress = int * (item.getAttribute('prval') / 100);
+    const expected = int * (item.getAttribute('peval') / 100);
+    const ctx = item.getContext('2d');
+    ctx.lineWidth = 30;
+    ctx.beginPath();
+    ctx.strokeStyle = 'red';
+    ctx.arc(60,60,30,progress*Math.PI,int*Math.PI);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.strokeStyle = 'orange';
+    ctx.arc(60,60,30,0,expected*Math.PI);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.strokeStyle = 'green';
+    ctx.arc(60,60,30,0,progress*Math.PI);
+    ctx.stroke();
+});

@@ -1,9 +1,9 @@
 <link rel='stylesheet' href='./classes/css/modulecompletion.css'>
-<button onclick="window.location.href='{{page_url}}{{btm_ext}}'" class="btn btn-primary" id="activityrecord_btm">Back to menu</button>
-<h2 class='text-center'><b>{{fullname}}'s Module Completion</b></h2>
+<button onclick="window.location.href='{{page_url}}{{btm_ext}}'" class="btn btn-primary" id="activityrecord_btm">{{btm}}</button>
+<h2 class='text-center'><b>{{fullname}} {{title}}</b></h2>
 <h2 class='text-center'><b>{{coursename}}</b></h2>
 <div>
-    <h3 class='text-center'>Progress Bar</h3>
+    <h3 class='text-center'>{{progress_b}}</h3>
     <div id="progress_div" class='w-75 center d-flex'>
         <div id="progress_bar" style="width: {{progress}}%; height: 25px; background-color: green;"></div>
         <div id="expected_bar" style="width: {{expected}}%; height: 25px; background-color: orange;"></div>
@@ -12,26 +12,26 @@
 <ul class="w-75 pt-2 center">
     <li class="d-flex">
         <div class="otjh-prog-square mr-1" id="otjh_prog_progress"></div>
-        <p>Progress</p>
+        <p>{{progress_str}}</p>
         <p>: {{progress}}%</p>
     </li>
     <li class="d-flex">
         <div class="otjh-prog-square mr-1" id="otjh_prog_expected"></div>
-        <p>Expected</p>
+        <p>{{expected_str}}</p>
         <p>: {{expected_txt}}%</p>
     </li>
     <li class="d-flex">
         <div class="otjh-prog-square mr-1" id="otjh_prog_incomplete"></div>
-        <p>Incomplete</p>
+        <p>{{incomplete_str}}</p>
         <p>: {{incomplete}}%</p>
     </li>
 </ul>
 <table class='table table-bordered table-striped table-hover'>
     <thead>
         <tr>
-            <th>Module Name</th>
-            <th>Module Type</th>
-            <th>Completion State</th>
+            <th>{{mod_name}}</th>
+            <th>{{mod_type}}</th>
+            <th>{{comp_state}}</th>
         </tr>
     </thead>
     <tbody>

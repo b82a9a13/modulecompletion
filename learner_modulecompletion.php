@@ -10,12 +10,13 @@ use local_modulecompletion\lib;
 require_login();
 $lib = new lib;
 
+$p = 'local_modulecompletion';
 $errorTxt = '';
 $cid = $_GET['cid'];
 $fullname = '';
 if(isset($_GET{'cid'})){
     if(!preg_match("/^[0-9]*$/", $cid) || empty($cid)){
-        $errorTxt = 'Invalid course id provided.';
+        $errorTxt = get_string('invalid_cip', $p);
     } else {
         $context = context_course::instance($cid);
         require_capability('local/modulecompletion:student', $context);
@@ -29,7 +30,7 @@ if(isset($_GET{'cid'})){
         $_SESSION['mc_lrecords_cid'] = $cid;
     }
 } else {
-    $errorTxt = 'No course id provided.';
+    $errorTxt = get_string('no_cip', $p);
 }
 
 echo $OUTPUT->header();
@@ -39,6 +40,15 @@ if($errorTxt != ''){
     $percentages = $lib->get_percentages_learn();
     $expected = ($percentages[0] >= $percentages[1]) ? 0 : $percentages[1];
     $template = (Object)[
+        'btm' => get_string('btm', $p),
+        'title' => get_string('module_comp', $p),
+        'progress_b' => get_string('progress_b', $p),
+        'progress_str' => get_string('progress', $p),
+        'expected_str' => get_string('expected', $p),
+        'incomplete_str' => get_string('incomplete', $p),
+        'mod_name' => get_string('module_name', $p),
+        'mod_type' => get_string('module_type', $p),
+        'comp_state' => get_string('comp_state', $p),
         'page_url' => './../../my/index.php',
         'fullname' => $fullname,
         'coursename' => $lib->get_course_fullname($cid),
