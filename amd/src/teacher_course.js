@@ -1,5 +1,5 @@
 function course_clicked(id){
-    const errorTxt = document.getElementById('modcomp_error');
+    const errorTxt = $('#modcomp_error')[0];
     errorTxt.style.display = 'none';
     const params = `id=${id}`;
     const xhr = new XMLHttpRequest();
@@ -13,7 +13,7 @@ function course_clicked(id){
                 errorTxt.style.display = 'block';
             } else {
                 if(text['return']){
-                    const div = document.getElementById('course_content_div');
+                    const div = $('#course_content_div')[0];
                     div.innerHTML = text['return'];
                     const script = document.createElement('script');
                     script.src = './amd/min/progress_circle.min.js';

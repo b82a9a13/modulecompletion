@@ -26,7 +26,7 @@ if(isset($_POST['id'])){
                         <tbody>
                 ';
                 $type = 'a';
-                if($_SESSION['hl_menu_type']){
+                if(isset($_SESSION['hl_menu_type'])){
                     if($_SESSION['hl_menu_type'] == 'all'){
                         $type = 'a';
                     } elseif($_SESSION['hl_menu_type'] == 'one'){

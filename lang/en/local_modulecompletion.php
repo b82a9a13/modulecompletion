@@ -34,6 +34,7 @@
     $string['no_cip'] = 'No course id provided';
     $string['no_ca'] = 'No courses available';
     $string['no_uip'] = 'No user id provided';
+    $string['no_evp'] = 'No e value provided';
 //O
 //P
     $string['pluginname'] = 'Module Completion';

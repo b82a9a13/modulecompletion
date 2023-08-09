@@ -15,7 +15,7 @@ $type = '';
 $enrolments = [];
 $id = null;
 $errorTxt = '';
-if($_GET['id']){
+if(isset($_GET['id'])){
     $id = $_GET['id'];
     if(!preg_match("/^[0-9]*$/", $id) || empty($id)){
         $errorTxt = get_string('invalid_ci', $p);
@@ -42,6 +42,7 @@ if($_GET['id']){
     }
 }
 
+$title = get_string('module_comp', $p);
 $PAGE->set_url(new moodle_url('/local/modulecompletion/teacher.php'));
 $PAGE->set_title($title);
 $PAGE->set_heading($title);
