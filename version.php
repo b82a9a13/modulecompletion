@@ -11,5 +11,5 @@ $plugin->component = 'local_modulecompletion';
 $plugin->version = 7;
 $plugin->requires = 2016052314;
 $plugin->dependencies = [
-    'local_trainingplan' => 20
+    'local_trainingplan' => 23
 ];
