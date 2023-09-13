@@ -43,7 +43,7 @@ class lib{
     //Check if the current user is enrolled as a coach in a apprenticeship course
     public function check_coach(){
         global $DB;
-        $records = $DB->get_records_sql('SELECT {enrol}.courseid as courseid, {course}.fullname as fullname FROM {user_enrolments}
+        $records = $DB->get_records_sql('SELECT DISTINCT {enrol}.courseid as courseid, {course}.fullname as fullname FROM {user_enrolments}
             INNER JOIN {enrol} ON {enrol}.id = {user_enrolments}.enrolid
             INNER JOIN {context} ON {context}.instanceid = {enrol}.courseid
             INNER JOIN {role_assignments} ON {role_assignments}.contextid = {context}.id
@@ -60,7 +60,7 @@ class lib{
     //Check if the current user is enrolled in the course provided as a coach
     public function check_coach_course($id){
         global $DB;
-        $record = $DB->get_record_sql('SELECT {enrol}.courseid as courseid FROM {user_enrolments}
+        $record = $DB->get_record_sql('SELECT DISTINCT {enrol}.courseid as courseid FROM {user_enrolments}
             INNER JOIN {enrol} ON {enrol}.id = {user_enrolments}.enrolid
             INNER JOIN {context} ON {context}.instanceid = {enrol}.courseid
             INNER JOIN {role_assignments} ON {role_assignments}.contextid = {context}.id
