@@ -27,7 +27,7 @@ if(isset($_GET['id'])){
             $PAGE->set_course($lib->get_course_record($id));
             $type = 'one';
         } else {
-            $errorText = get_string('you_not_coach', $p);
+            $errorTxt = get_string('you_not_coach', $p);
         }
     }
 } else {

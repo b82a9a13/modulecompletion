@@ -10,13 +10,13 @@ use stdClass;
 class lib{
         
     //Get the category id for apprenticeships
-    public function get_category_id(){
+    private function get_category_id(){
         global $DB;
         return $DB->get_record_sql('SELECT id FROM {course_categories} WHERE name = ?',['Apprenticeships'])->id;
     }
 
     //Get current userid
-    public function get_userid(){
+    private function get_userid(){
         global $USER;
         return $USER->id;
     }
@@ -30,13 +30,6 @@ class lib{
     public function get_current_user_fullname(){
         global $DB;
         $record = $DB->get_record_sql('SELECT firstname, lastname FROM {user} WHERE id = ?',[$this->get_userid()]);
-        return $record->firstname.' '.$record->lastname;
-    }
-
-    //Get user full name from a specific id
-    public function get_user_fullname($id){
-        global $DB;
-        $record = $DB->get_record_sql('SELECT firstname, lastname FROM {user} WHERE id = ?',[$id]);
         return $record->firstname.' '.$record->lastname;
     }
 
@@ -81,7 +74,7 @@ class lib{
     }
 
     //Get the module completion progress and expected
-    public function get_completion_stats($uid, $cid, $totalmonths, $startdate){
+    private function get_completion_stats($uid, $cid, $totalmonths, $startdate){
         global $DB;
         $record = $DB->get_record_sql('SELECT count(*) as total FROM {course_modules}
             INNER JOIN {course_modules_completion} ON {course_modules_completion}.coursemoduleid = {course_modules}.id
